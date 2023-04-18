@@ -1,0 +1,29 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#navbar {
+    margin: 0;
+    padding: 24px;
+    display: flex;
+    justify-content: end;
+    border-bottom: 1px solid lightgray;
+    /* box-sizing: border-box; */
+}
+
+#navbar-right {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+    font-weight: bold;
+}
+
+#navbar-right a {
+    text-decoration: none;
+    color: black;
+}
+
+#navbar-right a:hover, #navbar-right a:active {
+    color: lightskyblue;
+}

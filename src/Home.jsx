@@ -1,31 +1,54 @@
-const mockEmployees = [
-  {
-    id: 0,
-    name: "mock",
-    lastname: 'mocklastname',
-    position: "Manager"
-  },
-  {
-    id: 1,
-    name: "employee 1",
-    lastname: "em",
-    position: "Engineer"
-  },
-  {
-    id: 2,
-    name: "employee 2",
-    lastname: "lord",
-    position: "Designer"
-  },
-]
+import React from "react"
+import { useState, useEffect } from "react"
+import Layout from "./Layout"
+import Admin from "./Admin"
+import User from "./User"
+import './style/Home.css'
+
 
 const Home = () => {
 
-  return (
-    <div>
+  const [sector, setSector] = useState('')
+  const [employees, setEmployees] = useState()
 
-    </div>
+  const defineSector = (sectorPrm) => {
+    setSector(sectorPrm)
+  }
+
+  function ContentNormal () {
+    if (sector === 'admin') {
+      return (
+        <Admin />
+      )
+    }
+    else if (sector === 'user') {
+      return (
+        <User />
+      )
+    }
+    else {
+      return (
+        <div></div>
+      )
+    }
+  }
+
+  return (
+    <Layout>
+      <div>
+        <div id="home-section1-normal">
+          <h1>Generation Thailand</h1>
+          <h1>React - Assessment</h1>
+          <div id="home-section1-normal-btn">
+            <button onClick={() => defineSector('user')}>User Home Sector</button>
+            <button onClick={() => defineSector('admin')}>Admin Home Sector</button>
+          </div>
+        </div>
+        <ContentNormal />
+      </div>
+    </Layout>
   )
+
 }
 
 

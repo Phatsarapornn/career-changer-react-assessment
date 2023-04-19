@@ -3,6 +3,10 @@
     padding: 0;
 }
 
+/* :root {
+    font-family: sans-serif;
+} */
+
 #home-section1-normal {
     padding: 50px;
     display: flex;

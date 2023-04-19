@@ -1,49 +1,47 @@
 import React from "react"
 import { useState, useEffect } from "react"
+import './style/Admin.css'
 
 
-const Admin = () => {
+const Admin = (props) => {
+    // const {employees} = props
 
-    const mockEmployees = [
-        {
-          id: 0,
-          name: "mock",
-          lastname: 'mocklastname',
-          position: "Manager"
-        },
-        {
-          id: 1,
-          name: "employee 1",
-          lastname: "em",
-          position: "Engineer"
-        },
-        {
-          id: 2,
-          name: "employee 2",
-          lastname: "lord",
-          position: "Designer"
-        },
-    ]
-    
-    const [user, setUser] = useState(mockEmployees)
-
-    const addUser = (userPrm) => {
-        userPrm.id = user.length + 1
-        setUser([...user, userPrm])
-    }
+    // const [user, setUser] = useState(props.employees)   {0},{1},{2}
 
     const [name, setName] = useState();
     const [lastname, setLastname] = useState();
     const [position, setPosition] = useState();
 
+    const addUser = (userPrm) => {
+        userPrm.id = props.employees.length
+        // setUser([...user, userPrm])
+        // props.setEmployees(user)
+        props.setEmployees([...props.employees, userPrm])
+        console.log(userPrm)
+    }
+
+    const deleteUser = (i) => {
+        const employeesEm = [...props.employees]
+        employeesEm.splice(i, 1)
+        props.setEmployees(employeesEm)
+    }
+
+    console.log(props.employees)
+
+    // const handleSubmit = (e) => {
+    //     e.preventDefault();
+    // }
+
     return (
-        <div id="home-section2-Admin">
+        <div className="admin-section2">
             <h2>Create User Here</h2>
-            <div>
+            {/* <form onSubmit={handleSubmit}> */}
+            <div className="admin-section2-input">
                 <input onChange={(event) => {setName(event.target.value)}} type="text" placeholder="Name" />
                 <input onChange={(event) => {setLastname(event.target.value)}} type="text" placeholder="Last Name" />
                 <input onChange={(event) => {setPosition(event.target.value)}} type="text" placeholder="Position" />
                 <button onClick={() => addUser({
+                    id: {},
                     name: name,
                     lastname: lastname,
                     position: position})}>Save</button>
@@ -55,16 +53,16 @@ const Admin = () => {
                     <th>Position</th>
                     <th>Action</th>
                 </tr>
-            {user.map((item) => {
-                return (
-                    <tr>
-                        <td>{item.name}</td>
-                        <td>{item.lastname}</td>
-                        <td>{item.position}</td>
-                        <td><button>Delete</button></td>
-                    </tr>
+                {props.employees.map((item, i) => {
+                    return (
+                        <tr key={i+1}>
+                            <td>{item.name}</td>
+                            <td>{item.lastname}</td>
+                            <td>{item.position}</td>
+                            <td><button onClick={() => deleteUser(i)} id="admin-delete-btn">Delete</button></td>
+                        </tr>
                 )
-            })}
+                })}
             </table>
         </div>
     )

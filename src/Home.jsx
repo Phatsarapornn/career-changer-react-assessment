@@ -8,9 +8,33 @@ import './style/Home.css'
 
 const Home = () => {
 
-  const [sector, setSector] = useState('')
-  const [employees, setEmployees] = useState()
+  const mockEmployees = [
+    {
+      id: 0,
+      name: "mock",
+      lastname: 'mocklastname',
+      position: "Manager"
+    },
+    {
+      id: 1,
+      name: "employee 1",
+      lastname: "em",
+      position: "Engineer"
+    },
+    {
+      id: 2,
+      name: "employee 2",
+      lastname: "lord",
+      position: "Designer"
+    },
+  ]
 
+
+  const [sector, setSector] = useState('')
+  const [employees, setEmployees] = useState(mockEmployees)
+
+
+  // set sector
   const defineSector = (sectorPrm) => {
     setSector(sectorPrm)
   }
@@ -18,12 +42,12 @@ const Home = () => {
   function ContentNormal () {
     if (sector === 'admin') {
       return (
-        <Admin />
+        <Admin employees={employees} setEmployees={setEmployees} />
       )
     }
     else if (sector === 'user') {
       return (
-        <User />
+        <User employees={employees} setEmployees={setEmployees} />
       )
     }
     else {
@@ -33,12 +57,15 @@ const Home = () => {
     }
   }
 
+
   return (
     <Layout>
       <div>
         <div id="home-section1-normal">
           <h1>Generation Thailand</h1>
-          <h1>React - Assessment</h1>
+          { sector === '' && <h1>React - Assessment</h1>}
+          { sector === 'user' && <h1>Home - User Sector</h1>}
+          { sector === 'admin' && <h1>Home - Admin Sector</h1>}
           <div id="home-section1-normal-btn">
             <button onClick={() => defineSector('user')}>User Home Sector</button>
             <button onClick={() => defineSector('admin')}>Admin Home Sector</button>

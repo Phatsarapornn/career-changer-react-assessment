@@ -7,7 +7,6 @@ const Navbar = () => {
                 <li><a href={'/'}>Home</a></li>
                 <li><a href={'/Owner'}>Owner</a></li>
             </ul>
-            {/* <hr /> */}
         </div>
     )
 }

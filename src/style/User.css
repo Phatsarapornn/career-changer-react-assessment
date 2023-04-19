@@ -1,0 +1,31 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.user-section2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px;
+    border-collapse: collapse;
+}
+
+.user-section2 table,.user-section2 th,.user-section2 td {
+    border: 2px solid lightgray;
+    border-collapse: collapse;
+}
+
+.user-section2 th {
+    width: 200px;
+    height: 60px;
+    background-color: lightgrey;
+    border: 2px solid white;
+}
+
+.user-section2 td {
+    width: 200px;
+    height: 40px;
+    padding: 0 8px;
+}
